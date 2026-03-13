@@ -94,28 +94,53 @@ export async function listLinks(event: H3Event, options: ListLinksOptions): Prom
   const { KV } = cloudflare.env
   const tenantId = await resolveTenantId(event)
   const prefix = `link:${tenantId}:`
-  const list = await KV.list({
-    prefix,
-    limit: options.limit,
-    cursor: options.cursor || undefined,
-  })
+  let listCursor: string | undefined
+  const keys: Array<{ name: string }> = []
 
-  const links = await Promise.all(
-    (list.keys || []).map(async (key: { name: string }) => {
+  while (true) {
+    const list = await KV.list({
+      prefix,
+      limit: 1000,
+      cursor: listCursor,
+    })
+    keys.push(...(list.keys || []) as Array<{ name: string }>)
+    if (list.list_complete)
+      break
+    listCursor = 'cursor' in list ? list.cursor : undefined
+  }
+
+  const hydrated = await Promise.all(
+    keys.map(async (key) => {
       const { metadata, value: link } = await KV.getWithMetadata(key.name, { type: 'json' }) as { metadata: Record<string, unknown> | null, value: Link | null }
-      if (link) {
-        return {
-          ...(metadata ?? {}),
-          ...link,
-        }
-      }
-      return link
+      if (!link)
+        return null
+      return {
+        ...(metadata ?? {}),
+        ...link,
+      } as Link & Record<string, unknown>
     }),
   )
 
+  const sorted = hydrated
+    .filter(Boolean)
+    .sort((a, b) => {
+      const updatedA = (a?.updatedAt as number) || 0
+      const updatedB = (b?.updatedAt as number) || 0
+      if (updatedA !== updatedB)
+        return updatedB - updatedA
+      const createdA = (a?.createdAt as number) || 0
+      const createdB = (b?.createdAt as number) || 0
+      return createdB - createdA
+    }) as (Link & Record<string, unknown>)[]
+
+  const offset = Math.max(0, Number.parseInt(options.cursor || '0', 10) || 0)
+  const nextOffset = offset + options.limit
+  const links = sorted.slice(offset, nextOffset)
+  const listComplete = nextOffset >= sorted.length
+
   return {
     links,
-    list_complete: list.list_complete,
-    cursor: 'cursor' in list ? list.cursor : undefined,
+    list_complete: listComplete,
+    cursor: listComplete ? '' : String(nextOffset),
   }
 }

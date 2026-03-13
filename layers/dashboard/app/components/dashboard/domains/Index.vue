@@ -4,12 +4,27 @@ import { toast } from 'vue-sonner'
 const { t } = useI18n()
 const domain = ref('')
 const domains = ref<string[]>([])
+const tenants = ref<Array<{ username: string, tenantId: string, isAdmin: boolean }>>([])
+const selectedTenantId = ref('admin')
 const loading = ref(false)
+
+async function fetchTenants() {
+  const data = await useAPI<{ users: Array<{ username: string, tenantId: string, isAdmin: boolean }> }>('/api/auth/users')
+  tenants.value = data.users
+  if (!tenants.value.some(item => item.tenantId === selectedTenantId.value)) {
+    selectedTenantId.value = tenants.value[0]?.tenantId || 'admin'
+  }
+}
 
 async function fetchDomains() {
   loading.value = true
   try {
-    const data = await useAPI<{ domains: string[] }>('/api/domain/list')
+    const data = await useAPI<{ domains: string[] }>('/api/domain/list', {
+      query: {
+        tenantId: selectedTenantId.value,
+        _ts: Date.now(),
+      },
+    })
     domains.value = data.domains
   }
   finally {
@@ -23,23 +38,35 @@ async function addDomain() {
     return
   await useAPI('/api/domain/create', {
     method: 'POST',
-    body: { domain: value },
+    body: {
+      domain: value,
+      tenantId: selectedTenantId.value,
+    },
   })
   domain.value = ''
+  if (!domains.value.includes(value))
+    domains.value = [...domains.value, value].sort((a, b) => a.localeCompare(b))
   toast.success(t('domains.add_success'))
-  await fetchDomains()
 }
 
 async function removeDomain(value: string) {
   await useAPI('/api/domain/delete', {
     method: 'POST',
-    body: { domain: value },
+    body: {
+      domain: value,
+      tenantId: selectedTenantId.value,
+    },
   })
+  domains.value = domains.value.filter(item => item !== value)
   toast.success(t('domains.delete_success'))
-  await fetchDomains()
 }
 
-onMounted(fetchDomains)
+watch(selectedTenantId, fetchDomains)
+
+onMounted(async () => {
+  await fetchTenants()
+  await fetchDomains()
+})
 </script>
 
 <template>
@@ -49,6 +76,28 @@ onMounted(fetchDomains)
       <CardDescription>{{ $t('domains.description') }}</CardDescription>
     </CardHeader>
     <CardContent class="space-y-6">
+      <FieldGroup>
+        <Field>
+          <FieldLabel for="tenant">
+            Tenant
+          </FieldLabel>
+          <Select v-model="selectedTenantId">
+            <SelectTrigger id="tenant">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem
+                v-for="tenant in tenants"
+                :key="tenant.tenantId"
+                :value="tenant.tenantId"
+              >
+                {{ tenant.username }} ({{ tenant.tenantId }})
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      </FieldGroup>
+
       <FieldGroup>
         <Field>
           <FieldLabel for="domain">

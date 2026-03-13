@@ -4,10 +4,11 @@ import { getTenantId, requireAdminContext } from '../../utils/tenant'
 
 const CreateDomainSchema = z.object({
   domain: z.string().trim().min(1),
+  tenantId: z.string().trim().min(1).max(128).optional(),
 })
 
 export default eventHandler(async (event) => {
-  const { domain } = await readValidatedBody(event, CreateDomainSchema.parse)
+  const { domain, tenantId } = await readValidatedBody(event, CreateDomainSchema.parse)
   const normalizedDomain = validateDomain(domain)
   const { adminDomain } = useRuntimeConfig(event)
 
@@ -19,7 +20,7 @@ export default eventHandler(async (event) => {
   }
 
   requireAdminContext(event)
-  const tenantId = getTenantId(event)
-  await addTenantDomain(event, tenantId, normalizedDomain)
-  return { success: true, domain: normalizedDomain }
+  const targetTenantId = tenantId || getTenantId(event)
+  await addTenantDomain(event, targetTenantId, normalizedDomain)
+  return { success: true, domain: normalizedDomain, tenantId: targetTenantId }
 })

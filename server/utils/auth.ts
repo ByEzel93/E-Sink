@@ -15,6 +15,14 @@ export interface UserRecord {
   createdAt: string
 }
 
+export interface PublicUserRecord {
+  id: string
+  username: string
+  tenantId: string
+  isAdmin: boolean
+  createdAt: string
+}
+
 export interface SessionRecord {
   token: string
   userId: string
@@ -105,6 +113,39 @@ function getStore(event: H3Event) {
 export async function getUserByUsername(event: H3Event, username: string) {
   const KV = getStore(event)
   return await KV.get(`user:${username}`, { type: 'json' }) as UserRecord | null
+}
+
+export async function listUsers(event: H3Event) {
+  const KV = getStore(event)
+  let cursor: string | undefined
+  const users: PublicUserRecord[] = []
+
+  while (true) {
+    const result = await KV.list({
+      prefix: 'user:',
+      limit: 1000,
+      cursor,
+    })
+    cursor = 'cursor' in result ? result.cursor : undefined
+
+    for (const key of result.keys || []) {
+      const user = await KV.get(key.name, { type: 'json' }) as UserRecord | null
+      if (!user)
+        continue
+      users.push({
+        id: user.id,
+        username: user.username,
+        tenantId: user.tenantId,
+        isAdmin: user.isAdmin === true,
+        createdAt: user.createdAt,
+      })
+    }
+
+    if (result.list_complete)
+      break
+  }
+
+  return users.sort((a, b) => a.username.localeCompare(b.username))
 }
 
 export async function createUser(event: H3Event, username: string, password: string) {
