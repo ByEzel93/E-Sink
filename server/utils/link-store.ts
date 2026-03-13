@@ -23,7 +23,7 @@ export function buildShortLink(event: H3Event, slug: string): string {
 async function resolveTenantId(event: H3Event) {
   const auth = getAuthContext(event)
   if (auth) {
-    return auth.tenantId
+    return auth.isAdmin ? 'admin' : auth.tenantId
   }
   const host = getRequestHost(event).replace(/:\d+$/, '').toLowerCase()
   const tenantIdByDomain = await resolveTenantIdByDomain(event, host)

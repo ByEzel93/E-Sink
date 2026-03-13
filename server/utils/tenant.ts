@@ -38,7 +38,8 @@ export function requireAdminContext(event: H3Event) {
 }
 
 export function getTenantId(event: H3Event) {
-  return requireAuthContext(event).tenantId
+  const auth = requireAuthContext(event)
+  return auth.isAdmin ? 'admin' : auth.tenantId
 }
 
 export async function resolveTenantIdByDomain(event: H3Event, domain: string) {
