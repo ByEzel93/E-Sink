@@ -1,0 +1,316 @@
+{
+  "common": {
+    "i18n": "Çoklu Dil",
+    "abbreviations": "Tr",
+    "current_language": "Türkçe",
+    "try_again": "Tekrar dene",
+    "cancel": "İptal",
+    "continue": "Devam",
+    "close": "Kapat",
+    "save": "Kaydet",
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "delete_success": "Silme başarılı!",
+    "search": "Ara"
+  },
+  "theme": {
+    "toggle": "Tema değiştir",
+    "light": "Açık",
+    "dark": "Koyu",
+    "system": "Sistem"
+  },
+  "login": {
+    "title": "Giriş",
+    "description": "Giriş yapmak için site tokenınızı girin",
+    "tips": "İpucu",
+    "preview_token": "Önizleme modu için site tokenı",
+    "submit": "Giriş",
+    "failed": "Giriş başarısız, lütfen tekrar deneyin",
+    "token_label": "Site Token",
+    "token_required": "Token gerekli"
+  },
+  "logout": {
+    "title": "Çıkış?",
+    "confirm": "Çıkış yapmak istediğinize emin misiniz?",
+    "action": "Çıkış"
+  },
+  "layouts": {
+    "footer": {
+      "copyright": "HTML.ZONE ürünüdür",
+      "social": {
+        "email": "E-posta",
+        "telegram": "Telegram",
+        "blog": "Blog",
+        "twitter": "Twitter",
+        "mastodon": "Mastodon",
+        "github": "GitHub"
+      }
+    },
+    "header": {
+      "select_language": "Dil seç"
+    }
+  },
+  "nav": {
+    "links": "Bağlantılar",
+    "analysis": "Analiz",
+    "realtime": "Gerçek Zamanlı",
+    "migrate": "İçe/Dışa Aktar"
+  },
+  "sidebar": {
+    "subtitle": "Link Kısaltıcı",
+    "platform": "Platform",
+    "settings": "Ayarlar",
+    "import": "İçe Aktar",
+    "export": "Dışa Aktar",
+    "coffee": "Bir kahve ısmarla",
+    "github": "GitHub",
+    "stars": "Yıldızlar",
+    "update": "Yeni sürüm {version} mevcut (mevcut: {current})"
+  },
+  "home": {
+    "hero": {
+      "github_repo": "GitHub Deposu"
+    },
+    "features": {
+      "title": "Özellikler",
+      "subtitle": "Basit ve yeterli işlevsellik",
+      "url_shortening": {
+        "title": "URL Kısaltma",
+        "description": "URL'lerinizi en kısa hale sıkıştırın"
+      },
+      "analytics": {
+        "title": "Analitik",
+        "description": "Bağlantı analizlerini izleyin ve anlamlı istatistikler toplayın"
+      },
+      "serverless": {
+        "title": "Sunucusuz",
+        "description": "Geleneksel sunuculara ihtiyaç duymadan dağıtın"
+      },
+      "customizable_slug": {
+        "title": "Özelleştirilebilir Slug",
+        "description": "Kişiselleştirilmiş slug ve büyük/küçük harf duyarlılığı desteği"
+      },
+      "ai_slug": {
+        "title": "AI Slug",
+        "description": "Slug oluşturmak için yapay zekâ kullanın"
+      },
+      "link_expiration": {
+        "title": "Bağlantı Süresi",
+        "description": "Bağlantılarınız için sona erme tarihi belirleyin"
+      },
+      "device_routing": {
+        "title": "Cihaz Yönlendirme",
+        "description": "iOS/Android kullanıcılarını App Store bağlantılarına yönlendirin"
+      },
+      "og_preview": {
+        "title": "Sosyal Önizleme",
+        "description": "Sosyal medya için özel OpenGraph önizlemeleri"
+      },
+      "realtime_analytics": {
+        "title": "Gerçek Zamanlı Analitik",
+        "description": "Canlı 3D küre ve gerçek zamanlı olay günlükleri"
+      },
+      "qr_code": {
+        "title": "QR Kod",
+        "description": "Kısa bağlantılarınız için QR kod üretin"
+      },
+      "import_export": {
+        "title": "İçe/Dışa Aktar",
+        "description": "JSON dosyalarıyla toplu taşıma"
+      },
+      "multi_language": {
+        "title": "Çoklu Dil",
+        "description": "Dashboard için tam i18n desteği"
+      }
+    },
+    "cta": {
+      "title": "Hemen dağıtım",
+      "description": "Birkaç basit tıklamayla hiçbir masraf olmadan dağıtıma başlayabilirsiniz",
+      "button": "Dağıtıma Başla"
+    },
+    "logos": {
+      "title": "Harika teknolojilerle geliştirildi"
+    },
+    "twitter": {
+      "follow": "X (Twitter) üzerinde takip et"
+    },
+    "stats": {
+      "title": "Sink Sayılarla",
+      "subtitle": "Dünyanın dört bir yanındaki geliştiriciler tarafından güvenilir",
+      "stars": "GitHub yıldızları",
+      "forks": "Forklar"
+    },
+    "testimonials": {
+      "title": "Kullanıcılar Seviyor",
+      "subtitle": "Geliştiricilerin Sink hakkında söylediklerini görün"
+    }
+  },
+  "dashboard": {
+    "title": "Kontrol Paneli",
+    "visits": "Ziyaretler",
+    "views": "Görüntülenmeler",
+    "visitors": "Ziyaretçiler",
+    "referers": "Yönlendirenler",
+    "stats": "'nin İstatistikleri",
+    "trend": "Trend",
+    "weekly_trend": "Haftalık Trend",
+    "custom_date": "Özel Tarih",
+    "date": "Tarih",
+    "date_range": "Tarih Aralığı",
+    "locations": "Konumlar",
+    "details": "Detaylar",
+    "name": "Ad",
+    "count": "Sayı",
+    "loading": "Yükleniyor",
+    "no_data": "Veri yok",
+    "none": "(Yok)",
+    "filter_placeholder": "Bağlantıları filtrele...",
+    "date_picker": {
+      "today": "Bugün",
+      "last_24h": "Son 24 saat",
+      "this_week": "Bu hafta",
+      "last_7d": "Son 7 gün",
+      "this_month": "Bu ay",
+      "last_30d": "Son 30 gün",
+      "last_90d": "Son 90 gün",
+      "custom": "Özel",
+      "custom_title": "Özel Tarih",
+      "single_date": "Tarih",
+      "date_range": "Tarih Aralığı"
+    },
+    "metrics": {
+      "country": "Ülke",
+      "region": "Bölge",
+      "city": "Şehir",
+      "referer": "Yönlendiren",
+      "slug": "Slug",
+      "language": "Dil",
+      "timezone": "Zaman Dilimi",
+      "device": "Cihaz",
+      "deviceType": "Cihaz Türü",
+      "os": "İşletim Sistemi",
+      "browser": "Tarayıcı",
+      "browserType": "Tarayıcı Türü"
+    },
+    "time_picker": {
+      "today": "Bugün",
+      "last_5m": "Son 5 dakika",
+      "last_10m": "Son 10 dakika",
+      "last_30m": "Son 30 dakika",
+      "last_1h": "Son 1 saat",
+      "last_6h": "Son 6 saat",
+      "last_12h": "Son 12 saat",
+      "last_24h": "Son 24 saat"
+    }
+  },
+  "links": {
+    "create": "Bağlantı Oluştur",
+    "edit": "Bağlantıyı Düzenle",
+    "delete_confirm_title": "Kesinlikle emin misiniz?",
+    "delete_confirm_desc": "Bu işlem geri alınamaz. Bağlantınız sunuculardan silinecek.",
+    "delete_success": "Silme başarılı!",
+    "delete_failed": "Silme başarısız!",
+    "update_success": "Bağlantı başarıyla güncellendi",
+    "create_success": "Bağlantı başarıyla oluşturuldu",
+    "preview_mode_tip": "Önizleme modu bağlantısı en fazla 5 dakika geçerlidir.",
+    "search_placeholder": "Bağlantıları ara...",
+    "no_results": "Bağlantı bulunamadı.",
+    "group_title": "Bağlantılar",
+    "copy_success": "Kopyalama başarılı!",
+    "created_at": "Oluşturulma",
+    "updated_at": "Güncellenme",
+    "expires_at": "Sona Erme",
+    "no_more": "Başka bağlantı yok",
+    "load_failed": "Bağlantılar yüklenemedi,",
+    "download_qr_code": "QR Kodu İndir",
+    "change_qr_color": "QR kod rengini değiştir",
+    "form": {
+      "url": "URL",
+      "slug": "Slug",
+      "comment": "Not",
+      "expiration": "Sona Erme",
+      "pick_date": "Tarih seç",
+      "device_redirect": "Cihaz Yönlendirme",
+      "google_play": "Google Play URL",
+      "app_store": "App Store URL",
+      "link_settings": "Bağlantı Ayarları",
+      "redirect_with_query_label": "Sorgu Parametreleriyle Yönlendir",
+      "redirect_with_query_description": "Kısa bağlantıdaki sorgu parametrelerini hedef URL'ye ekler. Genel ayarı geçersiz kılar.",
+      "cloaking_label": "Bağlantı Gizlemeyi Etkinleştir",
+      "cloaking_description": "Hedef URL yerine tarayıcı adres çubuğunda kısa bağlantıyı gösterir. iframe engelleyen sitelerde çalışmayabilir.",
+      "unsafe_label": "Güvensiz olarak işaretle",
+      "unsafe_description": "Yönlendirme öncesi uyarı sayfası gösterir. Ziyaretçi devam etmek için onaylamalıdır.",
+      "password_label": "Parola Koruması",
+      "password_description": "Bu kısa bağlantıya erişmek için parola gerektirir.",
+      "password_placeholder": "Devre dışı bırakmak için boş bırakın",
+      "og_settings": "OpenGraph Ayarları",
+      "og_title": "Başlık",
+      "og_title_placeholder": "URL ana makine adını kullanmak için boş bırakın",
+      "og_description": "Açıklama",
+      "og_description_placeholder": "Bağlantı açıklaması",
+      "og_image": "Görsel",
+      "advanced": "Gelişmiş",
+      "more_options": "Daha fazla seçenek",
+      "image_invalid_type": "Lütfen bir görsel dosyası yükleyin",
+      "image_size_limit": "Görsel boyutu 5MB'ı geçemez",
+      "image_upload_success": "Görsel başarıyla yüklendi",
+      "image_upload_failed": "Görsel yüklenemedi",
+      "image_upload_hint": "Yüklemek için tıklayın veya sürükleyin",
+      "image_ratio_hint": "Önerilen: 1200×630",
+      "slug_required": "Önce bir slug girin"
+    },
+    "sort": {
+      "newest": "En yeni önce",
+      "oldest": "En eski önce",
+      "az": "Slug A-Z",
+      "za": "Slug Z-A",
+      "tip": "Deneyim: Yalnızca yüklenen bağlantılar için"
+    },
+    "update_failed": "Bağlantı güncellenemedi",
+    "create_failed": "Bağlantı oluşturulamadı",
+    "ai_slug_failed": "AI slug oluşturulamadı"
+  },
+  "migrate": {
+    "backup": {
+      "title": "Manuel Yedekleme",
+      "description": "Tüm bağlantıların yedeğini yapılandırılmış R2 bucket'a manuel olarak alın",
+      "button": "Yedeklemeyi Başlat",
+      "backing_up": "Yedekleniyor...",
+      "success": "Yedekleme başarılı",
+      "failed": "Yedekleme başarısız"
+    },
+    "export": {
+      "title": "Bağlantıları Dışa Aktar",
+      "description": "Tüm bağlantılarınızı JSON dosyası olarak indirin",
+      "button": "Tümünü Dışa Aktar",
+      "total_links": "Toplam bağlantı",
+      "success": "Dışa aktarma başarılı",
+      "failed": "Dışa aktarma başarısız"
+    },
+    "import": {
+      "title": "Bağlantıları İçe Aktar",
+      "description": "Bağlantıları içe aktarmak için JSON dosyası yükleyin",
+      "dropzone": "JSON dosyasını buraya bırakın veya yüklemek için tıklayın",
+      "links_found": "bağlantı bulundu",
+      "button": "İçe Aktarmayı Başlat",
+      "importing": "İçe aktarılıyor...",
+      "import_more": "Daha fazla içe aktar",
+      "download_success": "Başarılı öğeleri indir",
+      "download_skipped": "Atlanan öğeleri indir",
+      "download_failed": "Başarısız öğeleri indir",
+      "result": {
+        "title": "İçe Aktarma Sonucu",
+        "success": "Başarıyla içe aktarıldı",
+        "skipped": "Atlandı (zaten var)",
+        "failed": "Başarısız",
+        "success_message": "{count} bağlantı başarıyla içe aktarıldı"
+      },
+      "errors": {
+        "invalid_json": "Geçersiz JSON dosyası",
+        "invalid_format": "Geçersiz dosya biçimi. Lütfen Sink'ten dışa aktarılmış bir dosya kullanın.",
+        "no_links": "Dosyada bağlantı bulunamadı",
+        "parse_error": "Dosya çözümlenemedi"
+      }
+    }
+  }
+}
