@@ -8,6 +8,7 @@ interface NavItem {
 
 const { title } = useAppConfig()
 const { isActive } = useDashboardRoute()
+const authUser = useState<{ isAdmin: boolean } | null>('dashboard-auth-user', () => null)
 
 const platformItems = computed<NavItem[]>(() => [
   {
@@ -30,20 +31,36 @@ const platformItems = computed<NavItem[]>(() => [
   },
 ])
 
-const settingsItems = computed<NavItem[]>(() => [
-  {
-    title: 'nav.migrate',
-    url: '/dashboard/migrate',
-    icon: DASHBOARD_ROUTES.migrate.icon,
-    isActive: isActive('migrate'),
-  },
-  {
-    title: 'nav.domains',
-    url: '/dashboard/domains',
-    icon: DASHBOARD_ROUTES.domains.icon,
-    isActive: isActive('domains'),
-  },
-])
+const settingsItems = computed<NavItem[]>(() => {
+  const items: NavItem[] = [
+    {
+      title: 'nav.migrate',
+      url: '/dashboard/migrate',
+      icon: DASHBOARD_ROUTES.migrate.icon,
+      isActive: isActive('migrate'),
+    },
+  ]
+
+  if (authUser.value?.isAdmin) {
+    items.push({
+      title: 'nav.domains',
+      url: '/dashboard/domains',
+      icon: DASHBOARD_ROUTES.domains.icon,
+      isActive: isActive('domains'),
+    })
+  }
+
+  return items
+})
+
+onMounted(async () => {
+  if (authUser.value)
+    return
+  try {
+    authUser.value = await useAPI<{ isAdmin: boolean }>('/api/auth/me')
+  }
+  catch {}
+})
 </script>
 
 <template>

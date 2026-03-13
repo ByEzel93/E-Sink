@@ -40,6 +40,6 @@ export default eventHandler(async (event) => {
     userId: session.userId,
     username: session.username,
     tenantId: session.tenantId,
-    isAdmin: false,
+    isAdmin: session.isAdmin === true,
   })
 })

@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { addTenantDomain, validateDomain } from '../../utils/domain'
-import { getTenantId } from '../../utils/tenant'
+import { requireAdminContext } from '../../utils/tenant'
 
 const CreateDomainSchema = z.object({
   domain: z.string().trim().min(1),
@@ -18,7 +18,7 @@ export default eventHandler(async (event) => {
     })
   }
 
-  const tenantId = getTenantId(event)
+  const { tenantId } = requireAdminContext(event)
   await addTenantDomain(event, tenantId, normalizedDomain)
   return { success: true, domain: normalizedDomain }
 })

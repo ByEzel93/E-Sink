@@ -11,6 +11,7 @@ export interface UserRecord {
   username: string
   passwordHash: string
   tenantId: string
+  isAdmin?: boolean
   createdAt: string
 }
 
@@ -19,6 +20,7 @@ export interface SessionRecord {
   userId: string
   username: string
   tenantId: string
+  isAdmin?: boolean
   createdAt: string
 }
 
@@ -112,6 +114,7 @@ export async function createUser(event: H3Event, username: string, password: str
     username,
     passwordHash: await hashPassword(password),
     tenantId: crypto.randomUUID(),
+    isAdmin: false,
     createdAt: new Date().toISOString(),
   }
   await KV.put(`user:${username}`, JSON.stringify(user))
@@ -125,6 +128,7 @@ export async function createSession(event: H3Event, user: UserRecord) {
     userId: user.id,
     username: user.username,
     tenantId: user.tenantId,
+    isAdmin: user.isAdmin === true,
     createdAt: new Date().toISOString(),
   }
   await KV.put(`session:${session.token}`, JSON.stringify(session), {
@@ -136,6 +140,20 @@ export async function createSession(event: H3Event, user: UserRecord) {
 export async function getAuthSession(event: H3Event, token: string) {
   const KV = getStore(event)
   return await KV.get(`session:${token}`, { type: 'json' }) as SessionRecord | null
+}
+
+export async function setUserAdmin(event: H3Event, username: string, isAdmin: boolean) {
+  const KV = getStore(event)
+  const user = await getUserByUsername(event, username)
+  if (!user) {
+    throw createError({
+      status: 404,
+      statusText: 'User not found',
+    })
+  }
+  user.isAdmin = isAdmin
+  await KV.put(`user:${username}`, JSON.stringify(user))
+  return user
 }
 
 export async function deleteSession(event: H3Event, token: string) {

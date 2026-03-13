@@ -1,8 +1,8 @@
 import { listTenantDomains } from '../../utils/domain'
-import { getTenantId } from '../../utils/tenant'
+import { requireAdminContext } from '../../utils/tenant'
 
 export default eventHandler(async (event) => {
-  const tenantId = getTenantId(event)
+  const { tenantId } = requireAdminContext(event)
   const domains = await listTenantDomains(event, tenantId)
   return { domains }
 })

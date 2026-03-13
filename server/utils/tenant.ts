@@ -26,6 +26,17 @@ export function requireAuthContext(event: H3Event) {
   return auth
 }
 
+export function requireAdminContext(event: H3Event) {
+  const auth = requireAuthContext(event)
+  if (!auth.isAdmin) {
+    throw createError({
+      status: 403,
+      statusText: 'Forbidden',
+    })
+  }
+  return auth
+}
+
 export function getTenantId(event: H3Event) {
   return requireAuthContext(event).tenantId
 }
