@@ -11,6 +11,7 @@ interface User {
 const { isMobile } = useSidebar()
 const { removeToken } = useAuthToken()
 const authUser = ref<{ username: string, tenantId: string } | null>(null)
+const dashboardAuthUser = useState<{ isAdmin: boolean } | null>('dashboard-auth-user', () => null)
 
 const hostname = computed<string>(() => {
   if (import.meta.client) {
@@ -30,6 +31,7 @@ async function logOut() {
     await useAPI('/api/auth/logout', { method: 'POST' })
   }
   catch {}
+  dashboardAuthUser.value = null
   removeToken()
   navigateTo('/dashboard/login')
 }

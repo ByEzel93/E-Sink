@@ -54,12 +54,12 @@ const settingsItems = computed<NavItem[]>(() => {
 })
 
 onMounted(async () => {
-  if (authUser.value)
-    return
   try {
     authUser.value = await useAPI<{ isAdmin: boolean }>('/api/auth/me')
   }
-  catch {}
+  catch {
+    authUser.value = null
+  }
 })
 </script>
 
