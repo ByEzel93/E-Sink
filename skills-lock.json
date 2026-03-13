@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "sink": {
+      "source": "miantiao-me/sink",
+      "sourceType": "github",
+      "computedHash": "c6dda6cca407367e3d6dc7b706e18926e173fa39a1eff87b975fe8c79bf4fb75"
+    }
+  }
+}

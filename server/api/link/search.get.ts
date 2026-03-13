@@ -1,3 +1,5 @@
+import { getTenantId } from '../../utils/tenant'
+
 defineRouteMeta({
   openAPI: {
     description: 'Search all links (returns slug, url, comment for each link)',
@@ -25,13 +27,15 @@ interface LinkData {
 export default eventHandler(async (event) => {
   const { cloudflare } = event.context
   const { KV } = cloudflare.env
+  const tenantId = getTenantId(event)
+  const prefix = `link:${tenantId}:`
   const list: Link[] = []
   let finalCursor: string | undefined
 
   try {
     while (true) {
       const result = await KV.list({
-        prefix: `link:`,
+        prefix,
         limit: 1000,
         cursor: finalCursor,
       }) as { keys: Array<{ name: string, metadata?: LinkMetadata }>, list_complete: boolean, cursor?: string }
@@ -43,17 +47,16 @@ export default eventHandler(async (event) => {
           try {
             if (key.metadata?.url) {
               list.push({
-                slug: key.name.replace('link:', ''),
+                slug: key.name.replace(prefix, ''),
                 url: key.metadata.url,
                 comment: key.metadata.comment,
               })
             }
             else {
-              // Forward compatible with links without metadata
               const { metadata, value: link } = await KV.getWithMetadata(key.name, { type: 'json' }) as { metadata: LinkMetadata | null, value: LinkData | null }
               if (link) {
                 list.push({
-                  slug: key.name.replace('link:', ''),
+                  slug: key.name.replace(prefix, ''),
                   url: link.url,
                   comment: link.comment,
                 })
@@ -70,7 +73,7 @@ export default eventHandler(async (event) => {
           }
           catch (err) {
             console.error(`Error processing key ${key.name}:`, err)
-            continue // Skip this key and continue with the next one
+            continue
           }
         }
       }

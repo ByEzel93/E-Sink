@@ -9,6 +9,8 @@ interface User {
 }
 
 const { isMobile } = useSidebar()
+const { removeToken } = useAuthToken()
+const authUser = ref<{ username: string, tenantId: string } | null>(null)
 
 const hostname = computed<string>(() => {
   if (import.meta.client) {
@@ -18,15 +20,29 @@ const hostname = computed<string>(() => {
 })
 
 const user = computed<User>(() => ({
-  name: 'Root',
-  email: `root@${hostname.value}`,
+  name: authUser.value?.username || 'User',
+  email: `${authUser.value?.tenantId || 'tenant'}@${hostname.value}`,
   avatar: '/sink.png',
 }))
 
-function logOut() {
-  localStorage.removeItem('SinkSiteToken')
+async function logOut() {
+  try {
+    await useAPI('/api/auth/logout', { method: 'POST' })
+  }
+  catch {}
+  removeToken()
   navigateTo('/dashboard/login')
 }
+
+onMounted(async () => {
+  try {
+    const data = await useAPI<{ username: string, tenantId: string }>('/api/auth/me')
+    authUser.value = data
+  }
+  catch {
+    removeToken()
+  }
+})
 </script>
 
 <template>

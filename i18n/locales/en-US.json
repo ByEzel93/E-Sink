@@ -21,13 +21,15 @@
   },
   "login": {
     "title": "Login",
-    "description": "Enter your site token to login",
-    "tips": "Tips",
-    "preview_token": "The site token for preview mode is",
+    "description": "Sign in with your username and password",
+    "register_title": "Create Account",
+    "register_description": "Create a new account for your customer panel",
     "submit": "Login",
+    "register_submit": "Sign Up",
     "failed": "Login failed, please try again",
-    "token_label": "Site Token",
-    "token_required": "Token is required"
+    "username_label": "Username",
+    "password_label": "Password",
+    "invalid_form": "Username and password are required"
   },
   "logout": {
     "title": "LogOut?",
@@ -54,7 +56,8 @@
     "links": "Links",
     "analysis": "Analysis",
     "realtime": "Realtime",
-    "migrate": "Import/Export"
+    "migrate": "Import/Export",
+    "domains": "Domains"
   },
   "sidebar": {
     "subtitle": "Link Shortener",
@@ -69,64 +72,64 @@
   },
   "home": {
     "hero": {
-      "github_repo": "GitHub Repo"
+      "github_repo": "Project Repository"
     },
     "features": {
-      "title": "Features",
-      "subtitle": "Simple and sufficient functionality",
+      "title": "Bwork Link Features",
+      "subtitle": "Short links for your business, with customer-specific panels",
       "url_shortening": {
-        "title": "URL Shortening",
-        "description": "Compress your URLs to their minimal length"
+        "title": "Short Link Service",
+        "description": "Create clean, fast, and branded short links"
       },
       "analytics": {
-        "title": "Analytics",
-        "description": "Monitor link analytics and gather insightful statistics"
+        "title": "Customer Analytics",
+        "description": "Each customer sees only their own link stats"
       },
       "serverless": {
-        "title": "Serverless",
-        "description": "Deploy without the need for traditional servers"
+        "title": "Multi-Client Panels",
+        "description": "Give each customer their own private workspace"
       },
       "customizable_slug": {
-        "title": "Customizable Slug",
-        "description": "Support for personalized slugs and case sensitivity"
+        "title": "Custom Slugs",
+        "description": "Personalized slugs for campaigns and brands"
       },
       "ai_slug": {
-        "title": "AI Slug",
-        "description": "Leverage AI to generate slugs"
+        "title": "Smart Suggestions",
+        "description": "Faster slug suggestions to speed up creation"
       },
       "link_expiration": {
-        "title": "Link Expiration",
-        "description": "Set expiration dates for your links"
+        "title": "Expiring Links",
+        "description": "Set start and end dates for campaigns"
       },
       "device_routing": {
         "title": "Device Routing",
-        "description": "Redirect iOS/Android users to App Store links"
+        "description": "Send iOS and Android users to different URLs"
       },
       "og_preview": {
         "title": "Social Preview",
-        "description": "Custom OpenGraph previews for social media"
+        "description": "Control title, description, and image"
       },
       "realtime_analytics": {
-        "title": "Real-time Analytics",
-        "description": "Live 3D globe and real-time event logs"
+        "title": "Real-Time Insights",
+        "description": "See activity as it happens"
       },
       "qr_code": {
         "title": "QR Code",
-        "description": "Generate QR codes for your short links"
+        "description": "One click QR codes for every short link"
       },
       "import_export": {
         "title": "Import/Export",
-        "description": "Bulk migration via JSON files"
+        "description": "Move links in bulk when needed"
       },
       "multi_language": {
-        "title": "Multi-language",
-        "description": "Full i18n support for the dashboard"
+        "title": "Login & Sign Up",
+        "description": "Username and password access instead of tokens"
       }
     },
     "cta": {
-      "title": "Deployment immediately",
-      "description": "With just a few simple clicks, you can start deploying without any expenses",
-      "button": "Start Deploy"
+      "title": "Start with Bwork Link",
+      "description": "Offer short link services without installing a new panel for every client",
+      "button": "Setup Guide"
     },
     "logos": {
       "title": "Built with awesome technologies"
@@ -135,14 +138,14 @@
       "follow": "Follow on X(Twitter)"
     },
     "stats": {
-      "title": "Sink in Numbers",
-      "subtitle": "Trusted by developers around the world",
-      "stars": "Stars on GitHub",
-      "forks": "Forks"
+      "title": "Bwork Link in Numbers",
+      "subtitle": "A simple way to manage links for every customer",
+      "stars": "Links created",
+      "forks": "Active customers"
     },
     "testimonials": {
-      "title": "Loved by Users",
-      "subtitle": "See what developers are saying about Sink"
+      "title": "What Customers Say",
+      "subtitle": "Feedback from teams using Bwork Link"
     }
   },
   "dashboard": {
@@ -312,5 +315,16 @@
         "parse_error": "Failed to parse file"
       }
     }
+  },
+  "domains": {
+    "title": "Custom Domains",
+    "description": "Manage domains for your customer links",
+    "input_label": "Domain",
+    "input_placeholder": "customer.example.com",
+    "add_button": "Add Domain",
+    "empty": "No domains added yet",
+    "delete_button": "Delete",
+    "add_success": "Domain added",
+    "delete_success": "Domain deleted"
   }
 }

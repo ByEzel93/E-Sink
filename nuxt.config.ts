@@ -24,6 +24,8 @@ export default defineNuxtConfig({
     linkCacheTtl: 60,
     redirectWithQuery: false,
     homeURL: '',
+    adminDomain: '',
+    customerDomains: '',
     cfAccountId: '',
     cfApiToken: '',
     dataset: 'sink',

@@ -1,3 +1,5 @@
+import { requireAuthContext } from '../utils/tenant'
+
 defineRouteMeta({
   openAPI: {
     description: 'Verify the site token',
@@ -12,9 +14,11 @@ defineRouteMeta({
   },
 })
 
-export default eventHandler(() => {
+export default eventHandler((event) => {
+  const auth = requireAuthContext(event)
   return {
-    name: 'Sink',
-    url: 'https://sink.cool',
+    name: auth.username,
+    tenantId: auth.tenantId,
+    isAdmin: auth.isAdmin,
   }
 })

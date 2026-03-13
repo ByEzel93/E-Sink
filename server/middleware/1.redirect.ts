@@ -1,5 +1,6 @@
 import type { Link } from '@/types'
 import { parsePath, withQuery } from 'ufo'
+import { resolveTenantIdByDomain } from '../utils/tenant'
 
 const SOCIAL_BOTS = [
   'applebot',
@@ -48,8 +49,19 @@ function hasOgConfig(link: Link): boolean {
 export default eventHandler(async (event) => {
   const { pathname: slug } = parsePath(event.path.replace(/^\/|\/$/g, ''))
   const { slugRegex, reserveSlug } = useAppConfig()
-  const { homeURL, linkCacheTtl, caseSensitive, redirectWithQuery, redirectStatusCode } = useRuntimeConfig(event)
+  const { homeURL, linkCacheTtl, caseSensitive, redirectWithQuery, redirectStatusCode, adminDomain } = useRuntimeConfig(event)
   const { cloudflare } = event.context
+  const host = getRequestHost(event).replace(/:\d+$/, '').toLowerCase()
+  const mappedTenantId = await resolveTenantIdByDomain(event, host)
+  const isCustomerDomain = Boolean(mappedTenantId && mappedTenantId !== 'admin')
+  const normalizedAdminDomain = adminDomain.trim()
+  const isAdminDomain = normalizedAdminDomain ? host === normalizedAdminDomain : false
+
+  if (event.path === '/' && isCustomerDomain)
+    return sendRedirect(event, '/dashboard/login')
+
+  if (event.path === '/' && normalizedAdminDomain && !isAdminDomain)
+    return sendRedirect(event, '/dashboard/login')
 
   if (event.path === '/' && homeURL)
     return sendRedirect(event, homeURL)

@@ -21,13 +21,15 @@
   },
   "login": {
     "title": "Giriş",
-    "description": "Giriş yapmak için site tokenınızı girin",
-    "tips": "İpucu",
-    "preview_token": "Önizleme modu için site tokenı",
+    "description": "Kullanıcı adı ve şifre ile giriş yapın",
+    "register_title": "Hesap Oluştur",
+    "register_description": "Müşteri paneli için yeni hesap oluşturun",
     "submit": "Giriş",
+    "register_submit": "Kayıt Ol",
     "failed": "Giriş başarısız, lütfen tekrar deneyin",
-    "token_label": "Site Token",
-    "token_required": "Token gerekli"
+    "username_label": "Kullanıcı Adı",
+    "password_label": "Şifre",
+    "invalid_form": "Kullanıcı adı ve şifre zorunludur"
   },
   "logout": {
     "title": "Çıkış?",
@@ -54,7 +56,8 @@
     "links": "Bağlantılar",
     "analysis": "Analiz",
     "realtime": "Gerçek Zamanlı",
-    "migrate": "İçe/Dışa Aktar"
+    "migrate": "İçe/Dışa Aktar",
+    "domains": "Domainler"
   },
   "sidebar": {
     "subtitle": "Link Kısaltıcı",
@@ -69,64 +72,64 @@
   },
   "home": {
     "hero": {
-      "github_repo": "GitHub Deposu"
+      "github_repo": "Proje Deposu"
     },
     "features": {
-      "title": "Özellikler",
-      "subtitle": "Basit ve yeterli işlevsellik",
+      "title": "Bwork Link Özellikleri",
+      "subtitle": "İşiniz için kısa link hizmeti ve müşteri bazlı paneller",
       "url_shortening": {
-        "title": "URL Kısaltma",
-        "description": "URL'lerinizi en kısa hale sıkıştırın"
+        "title": "Kısa Link Hizmeti",
+        "description": "Temiz, hızlı ve markalı kısa linkler oluşturun"
       },
       "analytics": {
-        "title": "Analitik",
-        "description": "Bağlantı analizlerini izleyin ve anlamlı istatistikler toplayın"
+        "title": "Müşteri Analitiği",
+        "description": "Her müşteri yalnızca kendi istatistiklerini görür"
       },
       "serverless": {
-        "title": "Sunucusuz",
-        "description": "Geleneksel sunuculara ihtiyaç duymadan dağıtın"
+        "title": "Çoklu Müşteri Panelleri",
+        "description": "Her müşteriye özel ve güvenli bir panel sunun"
       },
       "customizable_slug": {
-        "title": "Özelleştirilebilir Slug",
-        "description": "Kişiselleştirilmiş slug ve büyük/küçük harf duyarlılığı desteği"
+        "title": "Özel Slug",
+        "description": "Kampanyalara özel okunabilir slug'lar"
       },
       "ai_slug": {
-        "title": "AI Slug",
-        "description": "Slug oluşturmak için yapay zekâ kullanın"
+        "title": "Akıllı Öneriler",
+        "description": "Hızlı slug önerileriyle zaman kazanın"
       },
       "link_expiration": {
-        "title": "Bağlantı Süresi",
-        "description": "Bağlantılarınız için sona erme tarihi belirleyin"
+        "title": "Süreli Linkler",
+        "description": "Kampanyalar için başlangıç ve bitiş tarihi belirleyin"
       },
       "device_routing": {
         "title": "Cihaz Yönlendirme",
-        "description": "iOS/Android kullanıcılarını App Store bağlantılarına yönlendirin"
+        "description": "iOS ve Android kullanıcılarını farklı URL'lere gönderin"
       },
       "og_preview": {
         "title": "Sosyal Önizleme",
-        "description": "Sosyal medya için özel OpenGraph önizlemeleri"
+        "description": "Başlık, açıklama ve görseli kontrol edin"
       },
       "realtime_analytics": {
         "title": "Gerçek Zamanlı Analitik",
-        "description": "Canlı 3D küre ve gerçek zamanlı olay günlükleri"
+        "description": "Aktiviteyi anlık takip edin"
       },
       "qr_code": {
         "title": "QR Kod",
-        "description": "Kısa bağlantılarınız için QR kod üretin"
+        "description": "Her kısa link için tek tıkla QR kod"
       },
       "import_export": {
         "title": "İçe/Dışa Aktar",
-        "description": "JSON dosyalarıyla toplu taşıma"
+        "description": "Bağlantıları toplu şekilde taşıyın"
       },
       "multi_language": {
-        "title": "Çoklu Dil",
-        "description": "Dashboard için tam i18n desteği"
+        "title": "Giriş ve Kayıt",
+        "description": "Token yerine kullanıcı adı ve şifre ile erişim"
       }
     },
     "cta": {
-      "title": "Hemen dağıtım",
-      "description": "Birkaç basit tıklamayla hiçbir masraf olmadan dağıtıma başlayabilirsiniz",
-      "button": "Dağıtıma Başla"
+      "title": "Bwork Link ile hemen başla",
+      "description": "Her müşteri için ayrı panel kurmadan kısa link hizmeti ver",
+      "button": "Kurulum Rehberi"
     },
     "logos": {
       "title": "Harika teknolojilerle geliştirildi"
@@ -135,14 +138,14 @@
       "follow": "X (Twitter) üzerinde takip et"
     },
     "stats": {
-      "title": "Sink Sayılarla",
-      "subtitle": "Dünyanın dört bir yanındaki geliştiriciler tarafından güvenilir",
-      "stars": "GitHub yıldızları",
-      "forks": "Forklar"
+      "title": "Bwork Link Sayılarla",
+      "subtitle": "Her müşterinin linklerini tek panelde yönetin",
+      "stars": "Oluşturulan linkler",
+      "forks": "Aktif müşteri"
     },
     "testimonials": {
-      "title": "Kullanıcılar Seviyor",
-      "subtitle": "Geliştiricilerin Sink hakkında söylediklerini görün"
+      "title": "Müşteri Yorumları",
+      "subtitle": "Bwork Link kullanan ekiplerden geri bildirimler"
     }
   },
   "dashboard": {
@@ -312,5 +315,16 @@
         "parse_error": "Dosya çözümlenemedi"
       }
     }
+  },
+  "domains": {
+    "title": "Özel Domainler",
+    "description": "Müşteri linkleri için domainlerini yönet",
+    "input_label": "Domain",
+    "input_placeholder": "musteri.ornek.com",
+    "add_button": "Domain Ekle",
+    "empty": "Henüz domain eklenmedi",
+    "delete_button": "Sil",
+    "add_success": "Domain eklendi",
+    "delete_success": "Domain silindi"
   }
 }

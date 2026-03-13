@@ -3,7 +3,11 @@ import { LogOut } from 'lucide-vue-next'
 
 const { removeToken } = useAuthToken()
 
-function logOut() {
+async function logOut() {
+  try {
+    await useAPI('/api/auth/logout', { method: 'POST' })
+  }
+  catch {}
   removeToken()
   navigateTo('/dashboard/login')
 }
